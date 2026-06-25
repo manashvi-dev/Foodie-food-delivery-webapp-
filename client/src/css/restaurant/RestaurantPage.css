@@ -397,6 +397,7 @@
 
   /* Cart button adjustments for mobile */
   .cart-float {
+    width:90%;
     bottom: 16px;
     padding: 12px 20px;
     gap: 12px;

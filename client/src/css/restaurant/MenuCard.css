@@ -75,19 +75,19 @@
 
 .menu-qty-control {
   display: flex;
-   height:49px;
+   height:35px;
   justify-content: space-between;
   align-items: center;
   padding: .1rem;
-  border-radius: 12px;
+  border-radius: 5px;
   margin-top: .2rem;
 }
 
 .menu-qty-control button {
-  width: 25px;
+  width: 30%;
   height: 25px;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   background: #f97316;
   color: white;
   font-size: 1.1rem;
