@@ -1,0 +1,274 @@
+/* ==========================
+   PAGE
+========================== */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  background:
+    radial-gradient(circle at top left, rgba(249,115,22,.15), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(249,115,22,.08), transparent 35%),
+    #111111;
+}
+
+/* ==========================
+   LEFT SIDE
+========================== */
+
+.auth-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem;
+}
+
+.auth-logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 4rem;
+}
+
+.auth-heading {
+  font-size: 4rem;
+  line-height: 1.05;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.auth-heading span {
+  color: #f97316;
+}
+
+.auth-sub {
+  max-width: 450px;
+  color: #9ca3af;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ==========================
+   RIGHT SIDE
+========================== */
+
+.auth-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+
+  background: rgba(36,36,36,.85);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  border-radius: 28px;
+
+  padding: 2.5rem;
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.auth-card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: .5rem;
+}
+
+.auth-card-sub {
+  color: #9ca3af;
+  margin-bottom: 2rem;
+  font-size: .95rem;
+}
+
+.auth-link {
+  color: #f97316;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================
+   FORM
+========================== */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.auth-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+
+.auth-field label {
+  color: #d1d5db;
+  font-size: .9rem;
+  font-weight: 500;
+}
+
+/* ==========================
+   INPUTS
+========================== */
+
+.auth-field input,
+.auth-field select {
+  width: 100%;
+
+  background: #1a1a1a;
+
+  border: 1px solid #3f3f3f;
+
+  color: white;
+
+  padding: 14px 16px;
+
+  border-radius: 14px;
+
+  font-size: .95rem;
+
+  transition: .25s ease;
+}
+
+.auth-field input::placeholder {
+  color: #6b7280;
+}
+
+.auth-field input:hover,
+.auth-field select:hover {
+  border-color: #555;
+}
+
+.auth-field input:focus,
+.auth-field select:focus {
+  outline: none;
+
+  background: #1a1a1a;
+
+  border-color: #f97316;
+
+  box-shadow:
+    0 0 0 4px rgba(249,115,22,.12),
+    0 0 20px rgba(249,115,22,.15);
+}
+
+.auth-field select option {
+  background: #242424;
+  color: white;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.auth-btn {
+  margin-top: .5rem;
+
+  width: 100%;
+
+  border: none;
+
+  padding: 15px;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #f97316,
+    #ea580c
+  );
+
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .25s ease;
+}
+
+.auth-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(249,115,22,.35);
+}
+
+.auth-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 900px) {
+
+  .auth-page {
+    flex-direction: column;
+  }
+
+  .auth-left {
+    padding: 3rem 2rem 1rem;
+  }
+
+  .auth-heading {
+    font-size: 2.8rem;
+  }
+
+  .auth-right {
+    padding: 1rem 1.5rem 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .auth-card {
+    padding: 1.5rem;
+  }
+
+  .auth-heading {
+    font-size: 2.2rem;
+  }
+
+  .auth-row {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-sub {
+    font-size: .95rem;
+  }
+}

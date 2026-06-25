@@ -1,0 +1,448 @@
+/* ==========================
+   PAGE
+========================== */
+
+.add-rest-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 28px;
+
+  background: #1a1a1a;
+  color: #fff;
+
+  min-height: 100vh;
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.add-rest-header {
+  margin-bottom: 28px;
+}
+
+.add-rest-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.add-rest-header p {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* ==========================
+   STEP INDICATOR
+========================== */
+
+.step-indicators {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.step-indicator span {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: #2d2d2d;
+  border: 1px solid #3f3f3f;
+
+  color: #9ca3af;
+}
+
+.step-indicator.done {
+  color: #f97316;
+}
+
+.step-indicator.done span {
+  background: #f97316;
+  border-color: #f97316;
+  color: white;
+}
+
+.step-line {
+  flex: 1;
+  min-width: 30px;
+  height: 2px;
+  background: #2d2d2d;
+}
+
+/* ==========================
+   FORM CARD
+========================== */
+
+.add-rest-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 24px;
+
+  background: #242424;
+  border: 1px solid rgba(255,255,255,.05);
+
+  padding: 32px;
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+/* ==========================
+   FIELDS
+========================== */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  color: #d1d5db;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-field input,
+.form-field select {
+  background: #1a1a1a;
+  border: 1px solid #3f3f3f;
+
+  color: white;
+
+  padding: 14px 16px;
+
+  border-radius: 14px;
+
+  font-size: 14px;
+
+  transition: all .2s ease;
+}
+
+.form-field input::placeholder {
+  color: #6b7280;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  outline: none;
+
+  border-color: #f97316;
+
+  box-shadow:
+    0 0 0 4px rgba(249,115,22,.12),
+    0 0 20px rgba(249,115,22,.12);
+
+  background: #1a1a1a;
+}
+
+.field-hint {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.step-badge {
+  background: #f97316;
+  color: white;
+
+  padding: 3px 8px;
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ==========================
+   AUTOCOMPLETE
+========================== */
+
+.autocomplete-wrap {
+  position: relative;
+}
+
+.suggestions-list {
+  position: absolute;
+
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+
+  background: #242424;
+  border: 1px solid #333;
+
+  border-radius: 16px;
+
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+
+  z-index: 100;
+
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.suggestions-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 16px;
+
+  cursor: pointer;
+  transition: .15s;
+}
+
+.suggestions-list li:hover {
+  background: #2d2d2d;
+}
+
+.suggestion-icon {
+  font-size: 18px;
+}
+
+.suggestion-main {
+  color: white;
+  font-size: 14px;
+  margin: 0;
+}
+
+.suggestion-sub {
+  color: #6b7280;
+  font-size: 12px;
+  margin: 2px 0 0;
+}
+
+/* ==========================
+   MAP
+========================== */
+
+.form-field.map-section,
+.form-field.image-section,
+.form-field.submit-section {
+  grid-column: 1 / -1;
+}
+
+.add-rest-map {
+  width: 100%;
+  height: 350px;
+
+  border-radius: 20px;
+  overflow: hidden;
+
+  border: 1px solid #333;
+  background: #1a1a1a;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  color: #6b7280;
+}
+
+.map-placeholder span:first-child {
+  font-size: 40px;
+}
+
+.map-note {
+  background: #242424;
+  border: 1px solid #333;
+
+  padding: 5px 12px;
+  border-radius: 999px;
+
+  font-size: 11px;
+}
+
+/* ==========================
+   PINNED ADDRESS
+========================== */
+
+.pinned-address {
+  margin-top: 16px;
+
+  padding: 16px;
+
+  border-left: 4px solid #f97316;
+
+  background: #1a1a1a;
+
+  border-radius: 14px;
+}
+
+.pinned-label {
+  color: #f97316;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.pinned-value {
+  color: #d1d5db;
+  font-size: 14px;
+}
+
+/* ==========================
+   IMAGE
+========================== */
+
+.image-upload-area {
+  border: 2px dashed #3f3f3f;
+  border-radius: 20px;
+  padding: 20px;
+
+  transition: .2s;
+}
+
+.image-upload-area:hover {
+  border-color: #f97316;
+}
+
+.add-rest-preview {
+  width: 100%;
+  height: 220px;
+
+  object-fit: cover;
+
+  border-radius: 18px;
+  border: 1px solid #333;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.add-rest-btn {
+  width: 100%;
+
+  border: none;
+  border-radius: 14px;
+
+  padding: 15px;
+
+  background: linear-gradient(
+    135deg,
+    #f97316,
+    #ea580c
+  );
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.add-rest-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(249,115,22,.35);
+}
+
+.add-rest-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* ==========================
+   FEEDBACK
+========================== */
+
+.form-feedback {
+  margin-top: 16px;
+
+  text-align: center;
+
+  background: rgba(34,197,94,.12);
+  color: #4ade80;
+
+  border: 1px solid rgba(34,197,94,.2);
+
+  padding: 12px;
+  border-radius: 14px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 768px) {
+
+  .add-rest-form {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .form-field.map-section,
+  .form-field.image-section,
+  .form-field.submit-section {
+    grid-column: auto;
+  }
+
+  .add-rest-map {
+    height: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .add-rest-page {
+    padding: 20px 16px;
+  }
+
+  .add-rest-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .step-indicators {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .step-line {
+    display: none;
+  }
+
+  .add-rest-form {
+    padding: 20px;
+  }
+
+  .add-rest-preview {
+    height: 180px;
+  }
+}

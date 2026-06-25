@@ -1,0 +1,17 @@
+
+.RestaurantListContainer{
+    width:100%;
+    min-height:fit-content;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background: #181818eb;
+}
+.restList{
+  width: 100%;
+  margin: 1.5rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 310px);
+  justify-content: center;
+  gap: 1rem;
+}

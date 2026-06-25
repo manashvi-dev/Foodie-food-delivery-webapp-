@@ -1,0 +1,76 @@
+.categoryContainer {
+  width: 85%;
+  margin: auto;
+
+  background: linear-gradient(
+    135deg,
+    #383838,
+    #434141,
+    #464646
+);
+  border-radius: 25px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 25px 20px;
+
+  margin-top: -50px;   /* overlap hero section */
+  position: relative;
+  z-index: 10;
+
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.categoryCard:hover {
+  transform: translateY(-8px);
+}
+
+.categoryIcon {
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+  background: #f7f7f7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2rem;
+}
+
+.categoryCard p {
+  margin-top: 12px;
+  color:white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .categoryContainer {
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 20px;
+
+    padding: 20px;
+  }
+
+  .categoryContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .categoryCard {
+    min-width: 90px;
+  }
+}

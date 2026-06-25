@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  /* add this */
+}
+
+.card {
+     background: linear-gradient(
+    135deg,
+    #242424 0%,
+    #525050 100%
+  );
+    border:1px solid rgba(235, 82, 6, 0.05);
+  width: 300px;
+  height:440px;
+  border-radius: 12px;
+  overflow: hidden;              /* clips image to rounded corners */
+  border: 0.5px solid #2e2e2e;  /* needed for hover border to show */
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card:hover {
+  border-color: #f36405;
+  transform: translateY(-2px);
+}
+
+/* ── Image ───────────────────────── */
+.card-img-wrap {
+  width: 97%;
+  margin-top:5px;
+  border-radius: 12px;
+  
+}
+
+.card-img-wrap img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;   /* stops image from stretching */
+  display: block; 
+  border-radius: 12px;     /* removes bottom gap */
+}
+
+/* ── Body ────────────────────────── */
+.card-body {
+  padding: 14px;
+  display:flex;
+  flex:1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.card-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.card-status {
+  font-size: 1rem;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+.card-status.open {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.card-status.closed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.1rem;
+  color: #9ca3af;
+}
+
+.cardAddress {
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* ── Button ──────────────────────── */
+.card-btn {
+  width: 100%;
+  padding: 9px;
+  background: #f97316;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.card-btn:hover {
+  background: #ea6c0a;
+}
+
+.card-btn--disabled {
+  background: #4b5563;
+  cursor: not-allowed;
+}
+
+.card-btn--disabled:hover {
+  background: #4b5563;
+}
+
+
+/* lucide-react */
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-meta-row svg {
+  flex-shrink: 0;
+  color: #f97316;
+}
