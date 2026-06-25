@@ -14,6 +14,7 @@ import TrackOrder from "./page/TrackOrder";
 import RestaurantDashboard from "./page/RestaurantDashboard";
 import AgentDashboard from "./page/AgentDashboard";
 import CustomerDashboard from "./page/CustomerDashboard";
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path='/customer/dashboard' element={<CustomerDashboard/>}/>
       </Routes>
       <Footer/>
+      <SpeedInsights />
     </BrowserRouter>
   );
 }
