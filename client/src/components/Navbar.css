@@ -126,13 +126,11 @@
   .navbar {
     padding: 14px 20px;
     flex-wrap: wrap;
+     align-items: center;
   }
 
   .hamburger {
     display: flex;
-    position:absolute;
-      top:1.2rem;
-      right:1rem;
   }
 
   .navLinks {
@@ -165,12 +163,7 @@
 
   .btnGhost,
   .btnOrange {
+    margin:.2rem;
     padding: 7px 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .btnGhost {
-    display: none;
   }
 }

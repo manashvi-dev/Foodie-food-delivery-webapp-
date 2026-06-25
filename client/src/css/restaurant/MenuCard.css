@@ -54,52 +54,53 @@
 
 /* Add To Cart */
 
-.menu-card-body > button{
-  margin-top:.5rem;
-  width:100%;
-  border:none;
-  border-radius:12px;
-  padding:.9rem;
+.menu-card-add-btn {
+  margin-top: .1rem;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: .4rem;
+  background: #f97316;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
 
-  background:#f97316;
-  color:white;
-
-  font-weight:600;
-  cursor:pointer;
+.menu-card-add-btn:hover {
+  background: #ea6c0a;
 }
 
 /* Quantity */
 
-.menu-card-body > div:last-child{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  padding:.5rem;
-
-
-  border-radius:12px;
+.menu-qty-control {
+  display: flex;
+   height:49px;
+  justify-content: space-between;
+  align-items: center;
+  padding: .1rem;
+  border-radius: 12px;
+  margin-top: .2rem;
 }
 
-.menu-card-body > div:last-child button{
-  width:36px;
-  height:36px;
-
-  border:none;
-  border-radius:10px;
-
-  background:#f97316;
-  color:white;
-
-  font-size:1.1rem;
-  font-weight:700;
+.menu-qty-control button {
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 10px;
+  background: #f97316;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.menu-card-body > div:last-child span{
-  color:white;
-  font-size:1rem;
-  font-weight:700;
+.menu-qty-control span {
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
 }
+
 
 /* Owner Actions */
 
@@ -119,11 +120,13 @@
   font-weight:600;
 }
 
-.owner-menu-actions button:first-child{
-  color:#f97316;
+.owner-menu-actions button:first-child {
+  background: rgba(249, 115, 22, 0.1);
+  color: #f97316;
 }
 
-.owner-menu-actions button:last-child{
- 
-  color:#ef4444;
+.owner-menu-actions button:last-child {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
 }
+

@@ -37,13 +37,13 @@ return (
             <>
             {/* Customer View */}
                 {!item.isAvailable ? (
-                            <span>
+                            <span className="unavailable-tag">
                                 Unavailable
                             </span>
                         ) : getquantity(item._id) === 0 ? (
-                            <button onClick={() =>addtocart(item)}>+ Add</button>
+                            <button className="menu-card-add-btn" onClick={() =>addtocart(item)}>+ Add</button>
                         ) : (
-                            <div>
+                            <div className="menu-qty-control">
                                 <button onClick={() =>removefromcart(item._id)}>-</button>
                                 <span>
                                     {getquantity(item._id)}
