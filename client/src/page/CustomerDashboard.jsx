@@ -28,7 +28,7 @@ export default function CustomerDashboard() {
      setprofile(profileRes.data);
      setorders(orderRes.data);
     }catch(err){
-        toast.err(err?.response?.data?.msg || "failed to load dashboard");
+        toast.error(err?.response?.data?.msg || "failed to load dashboard");
     }
     finally{
         setloading(false);
