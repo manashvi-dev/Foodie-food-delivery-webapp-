@@ -14,6 +14,7 @@ import TrackOrder from "./page/TrackOrder";
 import RestaurantDashboard from "./page/RestaurantDashboard";
 import AgentDashboard from "./page/AgentDashboard";
 import CustomerDashboard from "./page/CustomerDashboard";
+import { Analytics } from '@vercel/analytics/react';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path='/customer/dashboard' element={<CustomerDashboard/>}/>
       </Routes>
       <Footer/>
+      <Analytics />
     </BrowserRouter>
   );
 }
