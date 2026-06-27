@@ -24,6 +24,8 @@ export default function RestaurantCard({ restaurant }) {
           }
           alt={name}
           loading="lazy"
+          width="400"
+         height="220"
         />
       </div>
 

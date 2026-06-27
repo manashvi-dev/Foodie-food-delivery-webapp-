@@ -6,6 +6,7 @@ import "../../css/home/Restaurantlist.css";
 
 export default function RestaurantList() {
 const [rest,setrest] = useState([]);
+const [loading,setloading] = useState(true);
 
 useEffect(() => {
 
@@ -14,6 +15,9 @@ useEffect(() => {
     setrest(res.data);}
     catch(err){
         console.log(err);
+    }
+    finally{
+      setloading(false);
     }
     }
 
@@ -39,14 +43,16 @@ async function handlesearch(search){
     <>
     <div className="RestaurantListContainer">
       <Category handlesearch={handlesearch}/>
-      <br/>
-      <h1 style={{fontSize:"3.1rem",color:"#999999",textDecoration:"underline"}}>Restaurants</h1>
+      <h1 style={{fontSize:"3.1rem",color:"#999999",textDecoration:"underline",margin:"2rem 0"}}>Restaurants</h1>
      
       <div className='restList'>
-         {
-            rest.map((r)=>(
-                <RestaurantCard key={r._id} restaurant={r}/>
-            ))
+         {loading ? Array.from({length:8}).map((_,i)=>(
+          <div key={i} className='card skeleton'></div>
+         )) 
+         : rest.map((r)=>(
+          <RestaurantCard key={r._id} restaurant={r}/>
+         ))
+            
          }
       </div>
       </div>
