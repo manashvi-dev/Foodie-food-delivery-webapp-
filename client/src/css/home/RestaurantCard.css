@@ -31,7 +31,8 @@
 
 /* ── Image ───────────────────────── */
 .card-img-wrap {
-  width: 97%;
+  width: 96%;
+  margin:auto;
   height:220px;
   margin-top:5px;
   border-radius: 12px;
