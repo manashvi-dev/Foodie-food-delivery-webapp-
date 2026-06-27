@@ -25,9 +25,20 @@ export default function RestaurantHero({restaurant,menu}) {
   return (
     <div className="rest-hero">
       <img
-        src={restaurant.image?.url}
-        alt={restaurant.name}
-        className="rest-hero-img"
+        src={
+         restaurant.image?.url
+          ? restaurant.image.url.replace(
+          "/upload/",
+          "/upload/f_auto,q_auto,w_1200/"
+          )
+         : "/placeholder.jpg"
+        }
+       alt={restaurant.name}
+       className="rest-hero-img"
+       width="1200"
+       height="380"
+       loading="eager"
+       fetchPriority="high"
       />
 
       <div className="rest-hero-overlay">

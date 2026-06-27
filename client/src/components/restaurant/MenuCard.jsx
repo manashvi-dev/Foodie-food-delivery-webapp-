@@ -12,13 +12,23 @@ export default function MenuCard({
 
 return (
     <div className="menu-card">
-
+    <div className="menu-card-image-wrapper">
     <img
-        src={item.image?.url}
+        src={
+        item.image?.url
+        ? item.image.url.replace(
+            "/upload/",
+            "/upload/f_auto,q_auto,w_400/"
+          )
+        : "/placeholder.jpg"
+}
         alt={item.name}
         className="menu-card-img"
+        width="400"
+        height="220"
+        loading="lazy"
     />
-
+    </div>
     <div className="menu-card-body">
 
     <h3>{item.name}</h3>
