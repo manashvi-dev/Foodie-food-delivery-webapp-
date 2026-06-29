@@ -1,7 +1,9 @@
 /* ==========================
    PAGE
 ========================== */
-
+body{
+  background-color: #212121;
+}
 .add-rest-page {
   width: 100%;
   max-width: 1100px;

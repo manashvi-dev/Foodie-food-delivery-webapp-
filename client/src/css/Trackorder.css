@@ -1,9 +1,12 @@
+body{
+  background-color: #212121;
+}
 .track-page{
     max-width:1000px;
     margin: auto;
     padding:1rem;
     color:#fff;
-    background-color: #212121;
+    background-color: #262525;
     transition:all 0.5s;
     border-radius: 2rem;
     margin-top: 1.5rem;

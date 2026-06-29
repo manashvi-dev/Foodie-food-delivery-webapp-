@@ -18,7 +18,6 @@ router.post("/new",auth,role("restaurant"),upload.single("image"),validateRestau
 
 router.get("/:id",wrapAsync(restaurant.getRestaurant));
 
-
 router.patch("/edit/:id",auth,role("restaurant"),upload.single("image"),validateRestaurant,wrapAsync(restaurant.updateRestaurant));
 
 router.delete("/:id",auth,role("restaurant"),wrapAsync(restaurant.deleteRestaurant));

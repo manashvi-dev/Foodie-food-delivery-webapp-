@@ -1,4 +1,7 @@
 /* ── Page ────────────────────────── */
+body{
+  background-color: #212121;
+}
 .rest-page {
   background: #1a1a1a;
   min-height: 100vh;

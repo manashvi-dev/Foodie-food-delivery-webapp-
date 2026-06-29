@@ -3,6 +3,9 @@
   padding:0;
   box-sizing: border-box;
 }
+body{
+  background-color: #212121;
+}
 .agent{
   background-color: #1b1a1a;
   width:100vw;
