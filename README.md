@@ -168,8 +168,3 @@ Add screenshots here.
 
 ---
 
-## 👨‍💻 Author
-
-**Manashvi Prajapati**
-
-If you found this project helpful, consider giving it a ⭐ on GitHub!
