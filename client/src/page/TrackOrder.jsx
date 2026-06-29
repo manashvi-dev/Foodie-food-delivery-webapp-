@@ -2,6 +2,7 @@ import {useState,useEffect,useRef} from "react";
 import {useNavigate,useParams} from "react-router-dom";
 import toast from 'react-hot-toast';
 import axios from '../api/axios';
+import socket from '../socket';
 import "../css/Trackorder.css";
 import OrderProgress from "../components/trackorder/OrderProgress";
 import OrderDetails from "../components/trackorder/OrderDetails";
@@ -51,7 +52,30 @@ export default function TrackOrder() {
 
     useEffect(()=>{
         fetchorder();
-    },[]);
+
+        socket.connect();
+        socket.emit('joiOrder',orderid);
+
+        socket.on('orderStatusUpdate',({orderId, status: newStatus})=>{
+          if(orderId!==orderid) return;
+          setstatus(newStatus);
+
+          if(newStatus === 'delivered'){
+            toast.success('Your order has been delivered!');
+            socket.disconnect();
+          }
+
+          if(newStatus === 'cancelled'){
+            toast.error('Your order was cancelled');
+            socket.disconnect();
+          }
+        });
+
+        return ()=>{
+          socket.off('orderStatusUpdate');
+          socket.disconnect();
+        }
+    },[orderid]);
 
     useEffect(()=>{
         if(!order) return;

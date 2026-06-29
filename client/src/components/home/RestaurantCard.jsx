@@ -2,13 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { MapPin, Star } from "../../constants/icons";
 import "../../css/home/RestaurantCard.css";
 
+
 export default function RestaurantCard({ restaurant }) {
   const { _id, name, address, image, rating, isOpen } = restaurant;
   const navigate = useNavigate();
+  const prefetchRestaurantPage = () => {
+  import('../../page/RestaurantPage');
+};
 
   return (
     <div
       className="card"
+      onMouseEnter={prefetchRestaurantPage}
       onClick={() => navigate(`/restaurants/${_id}`)}
     >
       {/* Image */}

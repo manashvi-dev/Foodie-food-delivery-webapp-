@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
+import socket from '../socket';
 import toast from 'react-hot-toast';
 import '../css/restaurant/Dashboard.css';
 import OrderCard from "../components/restaurantdashboard/OrderCard";
@@ -22,6 +23,45 @@ export default function RestaurantDashboard() {
   useEffect(() => {
     fetchAll();
   }, []);
+
+  useEffect(() => {
+
+    if (!restaurant?._id) return;
+
+    socket.connect();
+
+    socket.emit("joinRestaurant", restaurant._id);
+
+    socket.on("newOrder", (order) => {
+
+        setOrders(prev => [order, ...prev]);
+
+        toast.success(`New order from ${order.customer?.name}! 🎉`);
+
+    });
+
+    socket.on("orderPickedUp", ({ orderId }) => {
+
+        setOrders(prev =>
+            prev.map(o =>
+                o._id === orderId
+                    ? { ...o, status: "out_for_delivery" }
+                    : o
+            )
+        );
+
+    });
+
+    return () => {
+
+        socket.off("newOrder");
+        socket.off("orderPickedUp");
+
+        socket.disconnect();
+
+    };
+
+}, [restaurant?._id]);
 
   async function fetchAll() {
     try {

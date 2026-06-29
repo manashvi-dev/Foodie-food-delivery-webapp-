@@ -19,7 +19,8 @@
     "react-dom": "^19.2.6",
     "react-hot-toast": "^2.6.0",
     "react-router-dom": "^7.17.0",
-    "react-scan": "^0.5.7"
+    "react-scan": "^0.5.7",
+    "socket.io-client": "^4.8.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

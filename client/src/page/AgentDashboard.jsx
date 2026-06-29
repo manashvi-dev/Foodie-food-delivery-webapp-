@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from '../api/axios';
 import toast from 'react-hot-toast';
+import socket from "../socket";
 import "../css/AgentDashboard.css";
 import AgentCard from '../components/agentDashboard/AgentCard';
 import AgentHeader from '../components/agentDashboard/AgentHeader';
@@ -15,6 +16,56 @@ export default function AgentDashboard() {
   useEffect(() => {
     fetchOrders();
   }, []);
+
+  useEffect(() => {
+
+    socket.connect();
+
+    socket.emit("joinAgent", user.id);
+
+    socket.on("orderAvailable", (order) => {
+
+        setOrders(prev => [order, ...prev]);
+
+        toast.success("🛵 New order available!");
+
+    });
+
+    socket.on("orderPickedUp", ({ orderId }) => {
+
+        setOrders(prev =>
+            prev.map(order =>
+                order._id === orderId
+                    ? { ...order, status: "out_for_delivery" }
+                    : order
+            )
+        );
+
+    });
+
+    socket.on("orderDelivered", ({ orderId }) => {
+
+        setOrders(prev =>
+            prev.map(order =>
+                order._id === orderId
+                    ? { ...order, status: "delivered" }
+                    : order
+            )
+        );
+
+    });
+
+    return () => {
+
+        socket.off("orderAvailable");
+        socket.off("orderPickedUp");
+        socket.off("orderDelivered");
+
+        socket.disconnect();
+
+    };
+
+}, []);
 
   async function fetchOrders() {
     try {

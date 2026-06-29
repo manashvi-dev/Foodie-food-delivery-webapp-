@@ -1,3 +1,4 @@
+const { isObjectIdOrHexString } = require("mongoose");
 const Order = require("../models/order");
 const Restaurant = require("../models/restaurant");
 
@@ -24,7 +25,11 @@ module.exports.placeorder = async (req,res) =>{
     const order = new Order(orderobj);
     await order.save();
 
-    return res.status(200).json(order._id );
+    const populate = await Order.findById(order._id).populate('customer','name phone').populate('items.menuItem','name price');
+
+    io.to(`restaurant_${restaurant}`).emit('newOrder',populate);
+
+    return res.status(201).json(order._id);
 
 }
 
@@ -137,45 +142,58 @@ module.exports.agentorders = async (req,res)=>{
 }
 
 
-module.exports.updatestatus = async (req,res)=>{
-    const {orderid} = req.params;
-    const {status} = req.body;
-    const role  = req.user.role;
+module.exports.updatestatus = async (req, res) => {
+  const { orderid } = req.params;
+  const { status } = req.body;
+  const role = req.user.role;
 
-    const order = await Order.findById(orderid);
+  const order = await Order.findById(orderid);
+  if (!order) return res.status(404).json({ msg: "Order not found" });
 
-    if(!order){
-         return res.status(400).json({msg:"order does not exist"});
-    }
+  const validStatuses = ["confirmed", "preparing", "out_for_delivery", "delivered", "cancelled"];
+  if (!validStatuses.includes(status))
+    return res.status(400).json({ msg: "Invalid status" });
 
-    const allstatus = ["placed","confirmed","preparing","out_for_delivery","delivered","cancelled"];
-    if(!allstatus.includes(status)){
-        return res.status(400).json({msg:"invalid status"});
-    }
+  if (role === 'restaurant') {
+    const rest = await Restaurant.findOne({ owner: req.user.id });
+    if (!rest || rest._id.toString() !== order.restaurant.toString())
+      return res.status(403).json({ msg: "Not authorized" });
 
-    if(role==="restaurant"){
-        const rest = await Restaurant.findOne({owner:req.user.id});
-        if (!rest || rest._id.toString() !== order.restaurant.toString())
-           return res.status(403).json({ msg: "Not authorized" });
+    const allowed = ["confirmed", "preparing", "cancelled"];
+    if (!allowed.includes(status))
+      return res.status(400).json({ msg: "Invalid status for restaurant" });
+  }
 
-         const reststatus= ["confirmed", "preparing", "cancelled"];
-         if(!reststatus.includes(status)){
-             return res.status(400).json({ msg: "Restaurant can only confirm, prepare or cancel" });
-         }
-    }
+  if (role === 'agent') {
+    const allowed = ["out_for_delivery", "delivered"];
+    if (!allowed.includes(status))
+      return res.status(400).json({ msg: "Invalid status for agent" });
+    if (!order.agent) order.agent = req.user.id;
+  }
 
-     if (req.user.role === "agent") {
-        const allowedForAgent = ["out_for_delivery", "delivered"];
-       if (!allowedForAgent.includes(status))
-         return res.status(400).json({ msg: "Agent can only update to out_for_delivery or delivered" });
+  order.status = status;
+  await order.save();
 
-       if (!order.agent) order.agent = req.user.id;
-     }
+  const io = req.app.get('io');
 
-    order.status = status;
-    await order.save();
+  io.to(`order_${orderid}`).emit('orderStatusUpdate', {
+    orderId: orderid,
+    status,
+  });
 
-    res.json({ msg: "Status updated", status: order.status });
+  if (['confirmed', 'preparing'].includes(status)) {
+    io.to('agents').emit('orderAvailable', {
+      orderId: orderid,
+      status,
+      restaurant: order.restaurant,
+    });
+  }
 
+  if (status === 'out_for_delivery') {
+    io.to(`restaurant_${order.restaurant}`).emit('orderPickedUp', {
+      orderId: orderid,
+    });
+  }
 
-}
+  res.json({ msg: "Status updated", status: order.status });
+};
