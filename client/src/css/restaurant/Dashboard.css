@@ -264,8 +264,8 @@ body{
 @media(max-width:768px){
 
   .dash-tabs{
-    width:100%;
-    justify-content:flex-start;
+    width:fit-content;
+    justify-content:center;
   }
 
   .dash-tab{
@@ -1001,4 +1001,15 @@ background: linear-gradient(
   }
 
 
+}
+
+.owner-add-btn{
+  width:84px;
+  background-color: rgb(233, 93, 6);
+  height:35px;
+  border:none;
+  border-radius: 9px;
+  color:white;
+  margin:0.2rem;
+  font-weight: 600;
 }

@@ -21,21 +21,7 @@ const RestaurantDashboard = lazy(() => import("./page/RestaurantDashboard"));
 const AgentDashboard = lazy(() => import("./page/AgentDashboard"));
 const CustomerDashboard = lazy(() => import("./page/CustomerDashboard"));
 
-function PageLoader() {
-  return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "20px",
-      }}
-    >
-      Loading...
-    </div>
-  );
-}
+
 
 function App() {
   return (
@@ -43,7 +29,7 @@ function App() {
       <Toaster position="top-right" />
       <Navbar />
 
-      <Suspense fallback={<PageLoader />}>
+      <Suspense>
         <Routes>
           <Route path="/" element={<Home />} />
 
