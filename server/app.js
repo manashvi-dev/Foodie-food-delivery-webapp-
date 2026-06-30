@@ -35,25 +35,24 @@ async function main() {
 }
 
 io.on("connection",(socket)=>{
-    console.log("Client connected:",socket.id);
+    
 
     socket.on("joinOrder",(orderId)=>{
         socket.join(`order_${orderId}`);
-        console.log(`Socket ${socket.id} joined order_${orderId}`);
     });
 
     socket.on("joinRestaurant",(restaurantId)=>{
         socket.join(`restaurant_${restaurantId}`);
-        console.log(`Socket ${socket.id} joined restaurant_${restaurantId}`);
+
     });
 
     socket.on("joinAgent",(agentId)=>{
         socket.join(`agent_${agentId}`);
-        console.log(`Socket ${socket.id} joined agent_${agentId}`);
+
     });
 
     socket.on("disconnect",()=>{
-        console.log("Client disconnected:",socket.id);
+       
     });
 })
 

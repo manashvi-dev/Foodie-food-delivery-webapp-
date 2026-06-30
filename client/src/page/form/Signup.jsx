@@ -31,7 +31,7 @@ export default function Signup() {
       toast.success(`Welcome, ${data.user.name}!`);
 
       if (data.user.role === 'restaurant') navigate('/restaurant/dashboard');
-      else if (data.user.role === 'agent') navigate('/agent/orders');
+      else if (data.user.role === 'agent') navigate('/agent/dashboard');
       else navigate('/');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Registration failed');

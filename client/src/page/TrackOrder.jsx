@@ -53,7 +53,11 @@ export default function TrackOrder() {
     useEffect(()=>{
         fetchorder();
 
-        socket.connect();
+        
+    },[]);
+
+    useEffect(()=>{
+      socket.connect();
         socket.emit('joiOrder',orderid);
 
         socket.on('orderStatusUpdate',({orderId, status: newStatus})=>{

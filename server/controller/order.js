@@ -4,6 +4,7 @@ const Restaurant = require("../models/restaurant");
 
 
 module.exports.placeorder = async (req,res) =>{
+    const io = req.app.get("io");
     const {restaurant,items,totalAmt,deliveryAdd} = req.body;
     const customer = req.user.id;
     const rest = await Restaurant.findById(restaurant);
@@ -97,7 +98,7 @@ module.exports.cancel = async (req,res)=>{
         return res.status(403).json({msg:"order can't be cancelled"});
     }
    order.status = "cancelled";
-   order.save();
+   await order.save();
 
    return res.status(200).json({msg:"order cancelled",status:order.status});
 }
